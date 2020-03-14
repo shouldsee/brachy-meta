@@ -1,0 +1,24 @@
+...removing adaptors
+...mapping with tophat
+...sorting mapped reads
+[bam_sort_core] merging from 20 files...
+...removing duplicates
+number of raw reads: 57464876.00000000000000000000
+number of clean reads mapped:
+26379282 + 0 in total (QC-passed reads + QC-failed reads)
+0 + 0 duplicates
+26379282 + 0 mapped (100.00%:-nan%)
+26379282 + 0 paired in sequencing
+13189641 + 0 read1
+13189641 + 0 read2
+17980542 + 0 properly paired (68.16%:-nan%)
+26379282 + 0 with itself and mate mapped
+0 + 0 singletons (0.00%:-nan%)
+961580 + 0 with mate mapped to a different chr
+961580 + 0 with mate mapped to a different chr (mapQ>=5)
+...normalising reads
+genome normalised coverage: 6.93540780943579731264
+...calling FPKMs
+...calling raw reads
+[bam_sort_core] merging from 11 files...
+...combining FPKM/TPM/Raw
