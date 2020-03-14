@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from path import Path
+import pymisca.ext as pyext
 def WORKDIR():return Path('./rawfile.workdir').makedirs_p()
 validate_fastq_py = ('/home/feng/envs/0726-polyq/src/validate_fastq.py')
 def _readData(fn,**kw):
     return pyext.readData(Path(__file__).dirname()/fn,encoding='utf8',**kw)
 
+mcurr = _readData(
+        '/home/feng/envs/upGeo/results/0424-database-raw/mcurr.csv',
+        guess_index=0)
+mcurr = mcurr.loc[~mcurr['FULL_PATH'].str.contains("Raw_data/184R_Q_reseq181_combined")]
+_rawMeta = mcurr
+def rawMeta(): return _rawMeta
 def template_common():
     template = u'''
 #### filepath: {{sample.fname}}
@@ -138,6 +145,8 @@ def clean(s):
         out.append(x)
     return '\n'.join(out)
 
+
+from attrdict import AttrDict
 from jinja2 import Template,StrictUndefined
 import pymisca.ext as pyext
 def main():
@@ -146,9 +155,10 @@ def main():
     df = samples.fillna('NA')
     samples = pyext.df__iterdict( df)
     samples = list(samples)
+    samples = [AttrDict(x) for x in samples]
     # Samples
     from pprint import pprint
-    pprint(samples)
+#    pprint(samples)
 
     # print(samples[0])
     for sample in samples:
